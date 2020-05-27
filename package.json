@@ -1,0 +1,20 @@
+{
+  "name": "yulia",
+  "version": "1.0.0",
+  "description": "Study form submittion",
+  "main": "server.js",
+  "scripts": {
+    "test": "test",
+    "start_server": "node server.js"
+  },
+  "author": "yradov",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.0.0",
+    "http": "0.0.1-security",
+    "url": "^0.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  }
+}

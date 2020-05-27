@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Forms</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container">
+    <h1>Колбэки</h1>
+
+    <div class="row">
+        <div class="col-6">
+            <input type="text" class="js-txt" placeholder="Введите имя">
+            <button type="button" class="btn btn-primary js-btn">Кнопка</button>
+
+        </div><!-- .col-6 -->
+    </div><!-- .row -->
+</div><!-- .container -->
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+<script>
+    let http = {
+        request: "",
+        response: "",
+        createServer: function (callback_fnc) {
+            return {
+                listen: function (port) {
+                    console.log("Сервер запущен на порту " + port + "...");
+                    let request = "";
+                    let response = "";
+                    $(".js-btn").on("click", function () {
+                        request = $(".js-txt").val();
+                        response = "Привет";
+                        callback_fnc(request, response)
+                    });
+                }
+            }
+        }
+    };
+
+
+    http.createServer(
+        function (request, response) {
+            console.log(response + " " + request);
+            let p = document.createElement("p");
+            p.innerText = response + " " + request;
+            document.querySelector(".col-6").append(p);
+        }
+    ).listen(8080);
+</script>
+</body>
+</html>
